@@ -29,9 +29,9 @@ const Auth = () => {
             let data
             const auth = getAuth()
             if (newAccount) {
-                data = await createUserWithEmailAndPassword(auth, email, password);
+               data = await authService.createUserWithEmailAndPassword(email, password);
             } else {
-                data = await signInWithEmailAndPassword(auth, email, password);
+               data = await authService.signInWithEmailAndPassword(email, password);
             }
             console.log(data);
         } catch (error) {
@@ -41,7 +41,7 @@ const Auth = () => {
     const toggleAccount = () => setNewAccount((prev) => !prev);
     const onSocialClick = async (event) => {
         const {
-            target: { name },
+            target: { name }
         } = event;
         let provider;
         try {
